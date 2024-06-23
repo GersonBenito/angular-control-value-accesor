@@ -1,0 +1,24 @@
+<div class="content">
+    <div class="content_form">
+        <div class="title">Rating form</div>
+        <div class="form">
+            <form [formGroup]="ratingForm" (ngSubmit)="sendValues()">
+                <div class="form-control">
+                    <label for="title">Title</label>
+                    <input type="text" placeholder="Title" id="title" formControlName="title">
+                    @if (getValidator('title')) {
+                        <span>El titulo es requerido</span>
+                    }
+                </div>
+                <div class="form-control">
+                    <label for="rating">Rating</label>
+                    <app-rating-control formControlName="rating" [isInValid]="getValidator('rating', 'min')"/>
+                    @if (getValidator('rating', 'min')) {
+                        <span>La calificacion minima es 3</span>
+                    }
+                </div>
+                <button type="submit" [disabled]="ratingForm.invalid">Send</button>
+            </form>
+        </div>
+    </div>
+</div>

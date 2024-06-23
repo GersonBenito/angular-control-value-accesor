@@ -1,0 +1,9 @@
+@for (item of ratingArray; track $index) {
+    <button
+        type="button"
+        [id]="'star_'+ $index"
+        (click)="onClick($index + 1)"
+    >
+        <span class="material-icons" [style.color]="!this.isInValid ? '#ffd740' : '#e40c0c'">{{showIcon($index)}}</span>
+    </button>
+}
